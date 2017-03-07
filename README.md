@@ -1,7 +1,5 @@
 # Speech to Text Browser Application with Watson Work Focus Servic
 
-[![Build Status](https://travis-ci.org/chris-price-772/speech-to-text-with-focus-nodejs.svg?branch=master)](https://travis-ci.org/chris-price-772/speech-to-text-with-focus-nodejs)
-
   The [Speech to Text][service_url] service uses IBM's speech recognition capabilities to convert speech in multiple languages into text. The transcription of incoming audio is continuously sent back to the client with minimal delay, and it is corrected as more speech is heard. The service is accessed via a WebSocket interface; a REST HTTP interface is also available;
 
 In the watsonwork fork, once the transcribed text comes back from the Watson Speech To Text service, it is sent to the Watson Workservices Focus service where actions, questions, or other lens types will be identified and marked up accordingly in the results web view.
