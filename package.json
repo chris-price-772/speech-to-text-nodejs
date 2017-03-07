@@ -1,10 +1,10 @@
 {
-  "name": "SpeechToTextBrowserStarterApp",
-  "version": "2.0.0",
-  "description": "A sample browser app for Bluemix that use the speech-to-text service, fetching a token via Node.js",
+  "name": "SpeechToTextWithFocusBrowserStarterApp",
+  "version": "1.0.0",
+  "description": "A sample browser app for Bluemix that use the speech-to-text and Watson Work Focus services",
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson-developer-cloud/speech-to-text-nodejs.git"
+    "url": "https://github.com/watsonwork/speech-to-text-with-focus-nodejs.git"
   },
   "engines": {
     "node": ">=6.0",
@@ -25,7 +25,7 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/watson-developer-cloud/speech-to-text-nodejs/issues"
+    "url": "https://github.com/watsonwork/speech-to-text-with-focus-nodejs/issues"
   },
   "scripts": {
     "start": "node server.js",
