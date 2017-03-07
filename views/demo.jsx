@@ -212,6 +212,47 @@ export default React.createClass({
 
   handleFormattedMessage(msg) {
     this.setState({formattedMessages: this.state.formattedMessages.concat(msg)});
+
+    this.getFinalResults()
+   .filter(r => !r.results[0].className)
+   .forEach(resultObject => resultObject.results.forEach(result => {
+       result.alternatives[0].transcript = result.alternatives[0].transcript.replace(' question mark.', '?');
+
+       fetch('https://api.watsonwork.ibm.com/v1/focus',
+         {
+           headers : {
+             'Accept' : 'application/json',
+             'Content-Type' : 'application/json',
+             'Authorization' : 'Bearer ' + this.state.wwsToken
+           },
+           method : 'post',
+           body : JSON.stringify({ 'text' : result.alternatives[0].transcript, 'focusProvider' : 'eAssistant' })
+         }).then(res => {
+         if (res.status != 200) {
+           throw new Error('Error retrieving focus');
+         }
+         return res.text();
+       })
+       .then(resultText => {
+         var resultObject = JSON.parse(resultText);
+
+         console.log("focus response: %o", resultObject);
+
+         if (resultObject.focuses.length > 0) {
+           if (resultObject.focuses[0].lens === 'ActionRequest') {
+               result.className = 'action';
+           } else if (resultObject.focuses[0].lens === 'Question') {
+             result.className = 'question';
+           } else {
+             result.className = 'other';
+           }
+
+         } else {
+           result.className = 'noaction';
+         }
+       })
+       .catch(this.handleError);
+     }));
   },
 
   handleTranscriptEnd() {
@@ -239,7 +280,16 @@ export default React.createClass({
       }
       return res.text();
     }). // todo: throw here if non-200 status
-    then(token => this.setState({token})).catch(this.handleError);
+    then(tokenResponse =>
+      {
+        var tokenObject = JSON.parse(tokenResponse);
+        console.log("Token: %o ", tokenObject);
+        var token = tokenObject.sttToken;
+        var wwsToken = tokenObject.wwsToken;
+
+        this.setState({token});
+        this.setState({wwsToken});
+      }).catch(this.handleError);
   },
 
   getKeywords(model) {

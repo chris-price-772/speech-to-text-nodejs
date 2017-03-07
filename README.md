@@ -1,12 +1,12 @@
-# Speech to Text Browser Application
-
-[![Build Status](https://travis-ci.org/watson-developer-cloud/speech-to-text-nodejs.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/speech-to-text-nodejs)
+# Speech to Text Browser Application with Watson Work Focus Servic
 
   The [Speech to Text][service_url] service uses IBM's speech recognition capabilities to convert speech in multiple languages into text. The transcription of incoming audio is continuously sent back to the client with minimal delay, and it is corrected as more speech is heard. The service is accessed via a WebSocket interface; a REST HTTP interface is also available;
 
+In the watsonwork fork, once the transcribed text comes back from the Watson Speech To Text service, it is sent to the Watson Workservices Focus service where actions, questions, or other lens types will be identified and marked up accordingly in the results web view.
+
 Node.js is also used to provide the browser client's authentication token.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/speech-to-text-nodejs)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/chris-price-772/speech-to-text-with-focus-nodejs)
 
 ## Getting started
 
@@ -41,6 +41,14 @@ Node.js is also used to provide the browser client's authentication token.
   cf service-key my-stt-service myKey
   ```
 
+1. Create and retrieve Watson Works Services API key and secret
+
+  ```none
+  Navigate to [https://developer.watsonwork.ibm.com]
+  Go to Apps
+  Create a new App and take note of the ID and secret to use below
+  ```
+  
 1. Create a `.env` file in the root directory by copying the sample `.env.example` file using the following command:
 
   ```none
@@ -53,6 +61,8 @@ Node.js is also used to provide the browser client's authentication token.
   ```none
   SPEECH_TO_TEXT_USERNAME=<username>
   SPEECH_TO_TEXT_PASSWORD=<password>
+  APP_ID=<watson-work-services-app-id>
+  APP_SECRET=<watson-work-services-app-secret>
   ```
 
 1. Install the dependencies you application need:
