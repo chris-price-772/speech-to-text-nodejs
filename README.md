@@ -6,7 +6,7 @@ In the watsonwork fork, once the transcribed text comes back from the Watson Spe
 
 Node.js is also used to provide the browser client's authentication token.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/chris-price-772/speech-to-text-with-focus-nodejs)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watsonwork/speech-to-text-with-focus-nodejs)
 
 ## Getting started
 
