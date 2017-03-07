@@ -1,4 +1,4 @@
-# Speech to Text Browser Application with Action Identification
+# Speech to Text Browser Application with Watson Work Focus Servic
 
 [![Build Status](https://travis-ci.org/chris-price-772/speech-to-text-nodejs.svg?branch=master)](https://travis-ci.org/chris-price-772/speech-to-text-nodejs)
 
