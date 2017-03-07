@@ -63,8 +63,8 @@ Node.js is also used to provide the browser client's authentication token.
   ```none
   SPEECH_TO_TEXT_USERNAME=<username>
   SPEECH_TO_TEXT_PASSWORD=<password>
-  APP_ID=<watson-work-services-api-id>
-  APP_SECRET=<watson-work-services-api-secret>
+  APP_ID=<watson-work-services-app-id>
+  APP_SECRET=<watson-work-services-app-secret>
   ```
 
 1. Install the dependencies you application need:
