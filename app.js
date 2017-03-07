@@ -17,6 +17,7 @@
 const express = require('express');
 const app = express();
 const watson = require('watson-developer-cloud');
+const oauth = require('./oauth.js');
 
 // Bootstrap application settings
 require('./config/express')(app);
@@ -34,14 +35,26 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-// Get token using your credentials
-app.get('/api/token', function(req, res, next) {
-  authService.getToken(function(err, token) {
-    if (err) {
-      next(err);
-    } else {
-      res.send(token);
-    }
+var appId = process.env.APP_ID;
+var secret = process.env.APP_SECRET;
+
+
+oauth.run(appId, secret, (err, wwsGetToken) => {
+  if(err) {
+    console.log("Failed to get wws token function");
+    return;
+  }
+
+  // Get token using your credentials
+  app.get('/api/token', function(req, res, next) {
+
+    authService.getToken(function(err, token) {
+      if (err) {
+        next(err);
+      } else {
+        res.send(JSON.stringify({sttToken: token, wwsToken: wwsGetToken()}));
+      }
+    });
   });
 });
 
