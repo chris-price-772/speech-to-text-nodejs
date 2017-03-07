@@ -16,6 +16,20 @@ sup {
     font-size: 0.8rem;
 }
 
+.action {
+  text-decoration: underline;
+  color: blue;
+}
+
+.question {
+	color: orange;
+}
+
+.other {
+	color: red;
+}
+
+
 /* override strange defaults in chrome */
 dialog, dd, dt {
     position: static;
